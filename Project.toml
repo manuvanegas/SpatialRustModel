@@ -1,0 +1,23 @@
+name = "SpatialRust"
+uuid = "8b437046-e5dd-42a9-af37-0c38301ea563"
+authors = ["Manuela Vanegas Ferro"]
+version = "1.0.0"
+
+[deps]
+Agents = "46ada45e-f475-11e8-01d0-f70cc89e6671"
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
+NaNStatistics = "b946abbf-3ea7-4610-9019-9858bfdeaf2d"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Profile = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+
+[compat]
+julia = "1.5.0"
