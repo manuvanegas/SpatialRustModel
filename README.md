@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/677233131.svg)](https://zenodo.org/badge/latestdoi/677233131)
+
 # SpatialRust Model
 
 The SpatialRust model is a computational tool designed to simulate the dynamics of coffee leaf rust (CLR) epidemics in agroforestry systems. This model integrates coffee plant physiology, shade tree dynamics, and CLR progression to provide insights into the complex interactions affecting CLR epidemics and coffee production.
