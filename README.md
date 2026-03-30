@@ -1,43 +1,63 @@
 [![DOI](https://zenodo.org/badge/677233131.svg)](https://zenodo.org/badge/latestdoi/677233131)
 
-# SpatialRust Model
-
-The SpatialRust model is a computational tool designed to simulate the dynamics of coffee leaf rust (CLR) epidemics in agroforestry systems. This model integrates coffee plant physiology, shade tree dynamics, and CLR progression to provide insights into the complex interactions affecting CLR epidemics and coffee production.
-
-The model was developed as the center of my doctoral dissertation in Biological Design. It does not produce quantitative predictions, but it is a versatile tool to understand trends and establish causal links between the components of this complex system. I will add a link to the dissertation document once it is made available.
-
-## Key Features
-
-- **Integrated Approach:** SpatialRust integrates coffee plant growth, shade tree dynamics, and CLR epidemic processes to provide a comprehensive view of how these factors interact.
-
-- **Spatially Explicit:** The model accounts for spatial variability in shade distribution, allowing for a more realistic representation of the microclimate within a coffee agroforestry system.
-
-- **Management Strategies:** The model allows users to explore different management strategies for CLR control, considering factors such as shading patterns and farm management practices.
-
-- **Multi-Dimensional Insights:** By simulating the interactions among coffee plants, shade trees, and CLR, the model provides insights into how different combinations of factors can impact coffee production and disease progression.
-
+# SpatialRust
+ 
+A spatially explicit, process-based model of Coffee Leaf Rust (CLR) epidemics in coffee agroforestry systems. Built as the centerpiece of a doctoral dissertation in Biological Design (Arizona State University, 2023).
+ 
+SpatialRust couples three interacting subsystems — shade tree growth and pruning dynamics, coffee plant physiology and biennial production cycles, and CLR infection, growth, sporulation, and dispersal — on a 100×100 spatial agent grid with a daily timestep. It is designed not to produce quantitative predictions, but to establish causal links between management decisions and epidemic and productivity outcomes over multi-year horizons.
+ 
+## What the model does
+ 
+- Simulates CLR epidemic dynamics under conventional and agroforestry-based farm management
+- Encodes shade tree effects on local microclimate (temperature, radiation) and pathogen dispersal
+- Models coffee plant photosynthesis, storage, and biennial production as a function of shading and disease load
+- Allows exploration of management strategies: shade tree density, pruning schedules, spatial farm arrangement, fungicide timing, and inspection frequency
+ 
+## Repository structure
+ 
+```
+src/
+  SpatialRust.jl       # Package entry point
+  ABM/                 # Core agent-based model
+    CreateABM.jl       # Model initialization
+    MainSetup.jl       # Parameter and environment setup
+    MainStep.jl        # Daily simulation step
+    FarmMap.jl         # Spatial farm layout
+    ShadeMap.jl        # Shade tree spatial distribution
+    CoffeeSteps.jl     # Coffee plant physiology and production
+    CGrowerSteps.jl    # Coffee grower / management actions
+    ShadeSteps.jl      # Shade tree growth and pruning dynamics
+    RustGrowth.jl      # CLR lesion growth and sporulation
+    RustDispersal.jl   # Wind and rain dispersal kernels
+  QuickMetrics.jl      # Summary statistics and output metrics
+  QuickRuns.jl         # Convenience functions for running scenarios
+scripts/
+  install.jl           # Dependency installation
+  samplerun.jl         # Minimal working example
+```
+ 
+This repository contains the core simulation model. The full research pipeline — including the Approximate Bayesian Computation calibration (1 million parameter combinations parallelized across SLURM array jobs) and genetic algorithm optimization of management strategies — was developed on top of this model as part of the dissertation work.
+ 
 ## Usage
-
-1. Install the required dependencies. Move to this project's directory and run:
-```bash
+ 
+Install dependencies:
+ 
+```
 $ julia scripts/install.jl
 ```
-2. Run the model using the provided sample script.
-```bash
+ 
+Run a sample simulation:
+ 
+```
 $ julia scripts/samplerun.jl
 ```
-4. Adjust parameters in the script to explore different scenarios and management strategies (a description of the different parameters will be added here once the dissertation document is made available).
-5. Review the model's outputs (in the `results` folder).
-
-## License
-
-The SpatialRust model is released under the MIT license. Please review the LICENSE file for more details.
-
-## Contact
-
-If you have any questions, suggestions, or feedback, please [create an issue](https://github.com/manuvanegas/SpatialRustModel/issues).
-
+ 
+Outputs are written to the `results/` folder. Parameter documentation is available in the [dissertation](https://hdl.handle.net/2286/R.2.N.190702).
+ 
 ## Citation
-
-A manuscript is in preparation. Check back later or reach out through the repository's [issues](https://github.com/manuvanegas/SpatialRustModel/issues) if you plan to use the model!
-
+ 
+Vanegas Ferro, M. (2023). SpatialRust (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.8237935
+ 
+## License
+ 
+MIT. See LICENSE for details.
